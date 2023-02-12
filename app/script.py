@@ -20,9 +20,7 @@ def get_ip_address():
     return s.getsockname()[0]
 
 with open("/home/output/results.txt",'w') as f:
-    print("Writing contents to file")
     f.write("List of files in directory /home/data: " + str(os.listdir("/home/data/")) + "\n")
     f.write("Total number of words in two files is " + str(count) + "\n")
     f.write("Top 3 words: " + str(top_3_words) + "\n")
     f.write("IP address of the machine is " + get_ip_address())
-    print("Content written")
