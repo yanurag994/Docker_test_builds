@@ -19,8 +19,12 @@ def get_ip_address():
     s.connect(("8.8.8.8", 80))
     return s.getsockname()[0]
 
+def list_all_files(path):
+    ls=[f for f in os.listdir(path) if os.path.isfile(os.path.join(path, f))]
+    return str(ls)
+
 with open("/home/output/results.txt",'w') as f:
-    f.write("List of files in directory /home/data: " + str(os.listdir("/home/data/")) + "\n")
+    f.write("List of files in directory /home/data: " + list_all_files("/home/data/") + "\n")
     f.write("Total number of words in two files is " + str(count) + "\n")
     f.write("Top 3 words: " + str(top_3_words) + "\n")
     f.write("IP address of the machine is " + get_ip_address())
